@@ -1,0 +1,26 @@
+<div class="content col-md-9">
+	<? if (!empty($todoList)): ?>
+		<ul class="todos-list">
+			<? foreach ($todoList as $item): ?>
+				<li>
+					<p>email: <?=$item['user_email']?></p>
+					<p>автор: <?=$item['user_name']?></p>
+					<p data-edit="Y">Текст: <?=$item['text']?></p>
+					<p data-status="<?=$item['status_id']?>">Статус: <?=$item['status_name']?></p>
+					<? if (!empty($_SESSION['isAuthorize'])):?>
+						<a class="edit-todo" data-id="<?=$item['id']?>" href="javascript:void(0)">Edit todo</a>
+					<? endif; ?>
+				</li>
+			<? endforeach; ?>
+		</ul>
+	<? endif; ?>
+	<? if (!empty($error)):?>
+		<p><?=$error?></p>
+	<? endif; ?>
+	<form method="post">
+		<input type="text" name="form_data[user_name]" placeholder="User name" required>
+		<input type="text" name="form_data[user_email]" placeholder="User email" required>
+		<input type="text" name="form_data[text]" placeholder="Text" required>
+		<input type="submit" value="submit" name="form_data_send">
+	</form>
+</div>

@@ -1,0 +1,13 @@
+<ul class="pagination">
+	<? foreach ($pagen as $item): ?>
+		<li>
+			<? if(!empty($item['href'])): ?>
+
+				<a href="<?=$item['href']?>"><?=$item['title']?></a>
+			<? else: ?>
+
+				<?=$item['title']?>
+			<? endif; ?>
+		</li>
+	<? endforeach; ?>
+</ul>
